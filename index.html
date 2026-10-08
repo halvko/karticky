@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kartičky</title>
+<meta name="description" content="Czech flashcards from Erik's lessons">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#eef0f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141821" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Kartičky">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="icon" href="./icons/icon-192.png">
+<link rel="stylesheet" href="./fonts/fonts.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Kartičky</h1>
+    <span class="dir" id="dir" hidden></span>
+  </header>
+  <nav class="decks" id="decks" aria-label="Decks to practise"></nav>
+  <div class="progress"><span id="count">–</span><div class="bar"><i id="fill"></i></div></div>
+  <div class="card" id="card" tabindex="0" role="button" aria-live="polite"></div>
+  <div class="actions" id="actions" hidden>
+    <button class="again" id="again" type="button">Znovu<span>didn't know it</span></button>
+    <button class="know" id="know" type="button">Umím<span>knew it</span></button>
+  </div>
+  <div class="tools"><button class="link" id="undo" type="button" disabled>↶ Zpět · undo last answer</button><button class="link" id="end" type="button" hidden>Ukončit kolo</button></div>
+  <footer>From your lesson notes, 3.–30. září · progress is saved on this device</footer>
+</div>
+<script src="./decks.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
