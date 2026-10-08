@@ -19,6 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 build.py
+      - name: Test
+        # playwright-core has no bundled browser; the e2e test drives the runner's preinstalled Chrome
+        run: |
+          npm ci --no-audit --no-fund
+          node --test tests/*.test.js
+          node tests/e2e.mjs
+        env:
+          CI: true
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

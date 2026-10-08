@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "python3 build.py && node --test tests/*.test.js && node tests/e2e.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.56.1"
+  }
+}

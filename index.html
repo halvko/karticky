@@ -31,9 +31,11 @@
     <button class="know" id="know" type="button">Umím<span>knew it</span></button>
   </div>
   <div class="tools"><button class="link" id="undo" type="button" disabled>↶ Zpět · undo last answer</button><button class="link" id="end" type="button" hidden>Ukončit kolo</button></div>
-  <footer>From your lesson notes, 3.–30. září · progress is saved on this device</footer>
+  <footer>From your lesson notes, 3.–30. září<br>Progress is saved on this device · <button class="link" id="export" type="button">Export</button> · <button class="link" id="import" type="button">Import</button>
+    <input type="file" id="file" accept=".json,application/json" hidden></footer>
 </div>
 <script src="./decks.js"></script>
+<script src="./srs.js"></script>
 <script src="./app.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ import hashlib, json, pathlib, shutil
 
 ROOT = pathlib.Path(__file__).parent
 DIST = ROOT / "dist"
-APP = ["index.html", "style.css", "app.js", "decks.js", "manifest.webmanifest"]
+APP = ["index.html", "style.css", "app.js", "srs.js", "decks.js", "manifest.webmanifest"]
 DIRS = ["fonts", "icons"]
 
 def main():

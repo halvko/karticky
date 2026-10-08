@@ -70,4 +70,5 @@ h1{font-family:var(--display);font-weight:700;font-size:1.35rem;margin:0;text-wr
 .chip .lvl{display:block;height:3px;margin-top:6px;border-radius:2px;background:var(--line);overflow:hidden}
 .chip .lvl i{display:block;height:100%;background:var(--good)}
 footer{font-size:.75rem;color:var(--muted);text-align:center}
+footer .link{font-size:inherit;padding:0;text-decoration:underline;text-underline-offset:2px}
 @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
