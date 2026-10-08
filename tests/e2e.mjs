@@ -47,24 +47,25 @@ try {
     assert.equal(st["l2|vlevo#r"].b, undefined);
   });
 
-  await check("a round plays through to Hotovo, with a miss repeated in the round, and the card never changes size", async () => {
+  await check("a round plays through to Hotovo, with a miss repeated in the round, and the card and footer never move", async () => {
     await page.locator("[data-n='10']").click();
-    const startHeight = (await page.locator("#card").boundingBox()).height;
+    const box = async () => { const c = await page.locator("#card").boundingBox(), f = await page.locator("footer").boundingBox(); return `card ${c.y}+${c.height}, footer ${f.y}`; };
+    const startHeight = await box();
     await page.locator("#go").click();
     assert.equal(await page.locator("#undo").isVisible(), true);
     assert.equal(await page.locator(".chip").first().isDisabled(), true); // decks are locked during a round
     let answers = 0, missed = false;
     const heights = new Set([startHeight]);
     while (await page.locator("#card .front").count()) {
-      heights.add((await page.locator("#card").boundingBox()).height);
+      heights.add(await box());
       await page.locator("#card").click();
-      heights.add((await page.locator("#card").boundingBox()).height);
+      heights.add(await box());
       if (!missed) { await page.locator("#again").click(); missed = true; } else await page.locator("#know").click();
       if (++answers > 30) throw new Error("round never ended");
     }
     assert.equal(await page.locator("#card b").innerText(), "Hotovo!");
-    heights.add((await page.locator("#card").boundingBox()).height);
-    assert.equal(heights.size, 1, `card height changed with its content: ${[...heights]}`);
+    heights.add(await box());
+    assert.equal(heights.size, 1, `layout moved with the card's content: ${[...heights].join(" | ")}`);
     assert.equal(await page.locator(".missed li").count(), 1);
     assert.equal(await page.locator("#undo").isVisible(), true); // undo stays on the Hotovo screen
     const log = await ls("log");
