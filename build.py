@@ -33,6 +33,8 @@ def main():
     sw = sw.replace("__VERSION__", version).replace("__FILES__", json.dumps(["./"] + ["./" + f for f in files], ensure_ascii=False))
     (DIST / "sw.js").write_text(sw)
     (DIST / ".nojekyll").write_text("")  # GitHub Pages: serve files as-is
+    if (ROOT / "CNAME").exists():
+        shutil.copy(ROOT / "CNAME", DIST / "CNAME")  # custom domain for GitHub Pages
     print(f"built dist/ ({len(files)} files, version {version})")
 
 if __name__ == "__main__":
