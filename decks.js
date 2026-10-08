@@ -2,13 +2,16 @@
 // so renaming the Czech side of a card resets its progress; adding or reordering cards is safe.
 const DECKS = [
  {id:"l2", name:"Lekce 2", sub:"30. září · kde je…?", cards:[
-  ["vlevo","on the left"],["vpravo","on the right"],["nahoře","at the top, up there"],["dole","at the bottom, down there"],
+  ["vlevo","on the left (kde?)","kde? = where · kam? = where to: doleva"],["vpravo","on the right (kde?)","kam? → doprava"],
+  ["nahoře","at the top, up there (kde?)","kam? → nahoru"],["dole","at the bottom, down there (kde?)","kam? → dolů"],
   ["uprostřed","in the middle"],["vedle banky","next to the bank","vedle + genitive"],["nad řekou","above the river","nad městem = above the town"],
-  ["rovně","straight ahead"],["doprava","to the right","doleva = to the left"],["daleko","far"],["blízko","near, close"],["pěšky","on foot"],
+  ["rovně","straight ahead"],["doprava","to the right (kam?)","kde? → vpravo"],["doleva","to the left (kam?)","kde? → vlevo"],["daleko","far"],["blízko","near, close"],["pěšky","on foot"],
   ["Prosím vás, kde je hotel Hilton?","Excuse me, where is the Hilton hotel?"],
   ["Nevíte, kde je metro?","Do you know where the metro is?","lit. “you don't know…” – the polite way to ask"],
   ["Musíte jet tři stanice metrem.","You have to go three stops by metro."],
   ["Musíte jít rovně a pak doprava.","You have to go straight and then right."],
+  ["Stanice je tam vpravo dole.","The station is down there on the right.","where it is (kde?): vpravo, dole · where you go (kam?): doprava, dolů"],
+  ["kde? / kam?","where? / where to?","Kde je banka? – Vlevo. · Kam jdete? – Doleva."],
   ["Vidíte ten bílý dům?","Do you see that white house?"],["Kolik stojí lístek?","How much is a ticket?"],
   ["Nevím.","I don't know.","vím = I know"],["Nemluvím moc česky.","I don't speak much Czech."],
   ["ta stanice","station (metro)"],["ta zastávka","stop (bus, tram)"],["to nádraží","station (train, bus)"],
@@ -24,8 +27,8 @@ const DECKS = [
   ["ta ústa, ta pusa","mouth","ústa is plural, so it takes ta"],["ten krk","neck"],["to rameno","shoulder"],["ta ruka, ruce","arm/hand, arms/hands"],["levá / pravá","left / right"],
   ["ta noha","leg (foot)"],["to koleno","knee"],["to břicho","belly"],["ta záda","back","always plural, so it takes ta"],["to chodidlo","sole of the foot","from chodit = to walk"],
   ["ta dlaň","palm"],["ten prst, prsty","finger, fingers"],["ten palec","thumb"],["Držím palce!","Fingers crossed!","lit. “I'm holding thumbs”"],
-  ["protáhnout se","to stretch"],["Tlačte ramena dolů.","Push your shoulders down."],["nahoru","up(wards)"],["dolů","down(wards)"],
-  ["dopředu","forward"],["dozadu","backwards"],["zpátky","back (return)"],["ten nádech","inhale, in-breath"],["ten výdech","exhale, out-breath"],
+  ["protáhnout se","to stretch"],["Tlačte ramena dolů.","Push your shoulders down."],["nahoru","up, upwards (kam?)","kde? → nahoře"],["dolů","down, downwards (kam?)","kde? → dole"],
+  ["dopředu","forward (kam?)"],["dozadu","backwards (kam?)"],["zpátky","back (return)"],["ten nádech","inhale, in-breath"],["ten výdech","exhale, out-breath"],
   ["hluboký nádech","deep breath"],["dýchat","to breathe"],["zadržet dech","to hold your breath"],
   ["pozice dítě","child's pose"],["pozice kočka","cat pose"],["pozice pes","downward dog","the teacher's note: like a roof (střecha)"],
   ["pozice prkno","plank"],["pozice kobra","cobra"],["pozice bojovník","warrior pose","bojovat = to fight"],["pozice strom","tree pose"]
@@ -57,4 +60,12 @@ const DECKS = [
   ["Kdo je to?","Who is it?","To je Václav Havel."],["Co je to?","What is it?","To je auto."],
   ["obrázek → 2, 3, 4 · 5+","obrázky · obrázků"]
  ]}
+];
+
+// Cards that give each other away: seeing one makes the others easy by contrast ("the other one"),
+// which inflates their scores. A round takes at most one card from each group. Matched by Czech text in any deck.
+const RELATED = [
+ ["vlevo","vpravo","doleva","doprava","levá / pravá","kde? / kam?","Stanice je tam vpravo dole."],
+ ["nahoře","dole","nahoru","dolů","Tlačte ramena dolů."],
+ ["dopředu","dozadu","zpátky"],
 ];

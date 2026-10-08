@@ -18,7 +18,7 @@ Czech flashcards built from my lesson notes. A static, offline-first PWA: no bui
 
 - Every card has two sides scheduled separately: recognise (CZ → EN) and produce (EN → CZ).
 - Scheduling is [FSRS-5](https://github.com/open-spaced-repetition) with its default parameters (`srs.js`). "Umím" grades Good, "Znovu" grades Again. Only the first answer to a side in a round counts; a missed side repeats later in the round and is due again the next day.
-- A round takes due sides first (least likely to be remembered first), then new sides, up to 20 new a day. With nothing due and no new sides left it is an extra round of the weakest sides. A round never shows both directions of one card.
+- A round takes due sides first (least likely to be remembered first), then new sides, up to 20 new a day. With nothing due and no new sides left it is an extra round of the weakest sides. A round never shows both directions of one card, nor more than one card from a group of related cards (`RELATED` in `decks.js`, e.g. vlevo / vpravo / doleva / doprava), since seeing one makes the others easy by contrast.
 - A side counts as known ("umím") at 5 days of stability. In Mix mode, a card's EN → CZ side unlocks once its CZ → EN side is known.
 - Study days roll over at 4am local time.
 

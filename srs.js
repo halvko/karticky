@@ -44,12 +44,12 @@ function migrateAll(stats,now){const out={};for(const[k,v]of Object.entries(stat
 
 function shuffle(a,rand){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 
-// Build a round from the eligible card sides ({key, card:{id}, dir}): due sides first (least likely
+// Build a round from the eligible card sides ({key, card:{id, group?}, dir}): due sides first (least likely
 // to be remembered first), then new sides up to the daily cap. If there is neither, it is an extra
-// round of the weakest sides. Never both directions of one card in a round.
+// round of the weakest sides. At most one side per card, or per group of related cards, in a round.
 function buildRound(items,stats,{size,now,newToday=0,rand=Math.random}){
   const seen=new Set(),out=[];
-  const add=it=>{if(out.length>=size||seen.has(it.card.id))return false;seen.add(it.card.id);out.push(it.key);return true};
+  const add=it=>{const k=it.card.group||it.card.id;if(out.length>=size||seen.has(k))return false;seen.add(k);out.push(it.key);return true};
   const byR=(a,b)=>retrievability(stats[a.key],now)-retrievability(stats[b.key],now);
   const today=day(now);
   items.filter(it=>stats[it.key]&&stats[it.key].due<=today).sort(byR).forEach(add);

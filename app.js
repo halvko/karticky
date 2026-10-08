@@ -1,6 +1,7 @@
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const $=id=>document.getElementById(id);
-const ALL=DECKS.flatMap(d=>d.cards.map(([cz,en,note])=>({id:d.id+"|"+cz,deck:d,cz,en,note})));
+const GROUP=Object.fromEntries(RELATED.flatMap((g,i)=>g.map(cz=>[cz,"group"+i])));
+const ALL=DECKS.flatMap(d=>d.cards.map(([cz,en,note])=>({id:d.id+"|"+cz,group:GROUP[cz],deck:d,cz,en,note})));
 // Each card is practised in two directions, tracked separately: "r" = recognise (CZ → EN), "p" = produce (EN → CZ).
 const ITEMS=ALL.flatMap(c=>[{key:c.id+"#r",card:c,dir:"r"},{key:c.id+"#p",card:c,dir:"p"}]);
 const BY=Object.fromEntries(ITEMS.map(it=>[it.key,it]));

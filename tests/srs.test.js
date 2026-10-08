@@ -74,3 +74,12 @@ test("with nothing due and no new cards left, the round is an extra round of the
   const r=SRS.buildRound(items,stats,{size:1,now:NOON+6e4,newToday:SRS.NEW_PER_DAY,rand:seq()});
   assert.equal(r.extra,true);assert.deepEqual(r.queue,["weak#r"]);
 });
+
+test("a round takes at most one card from a group of related cards",()=>{
+  const due={...SRS.review(null,SRS.GOOD,NOON-5*D),due:SRS.day(NOON)},stats={},items=[];
+  for(const id of ["vlevo","vpravo","doleva","doprava","daleko"])for(const dir of ["r","p"]){
+    items.push({key:`${id}#${dir}`,card:{id,group:id==="daleko"?undefined:"lr"},dir});stats[`${id}#${dir}`]=due}
+  const r=SRS.buildRound(items,stats,{size:10,now:NOON,rand:seq()});
+  assert.equal(r.queue.length,2);
+  assert.equal(r.queue.filter(k=>k.startsWith("daleko")).length,1);
+});
