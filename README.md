@@ -45,3 +45,7 @@ aws cloudfront create-invalidation --distribution-id DIST_ID --paths '/*'
 ```sh
 python3 build.py && python3 -m http.server -d dist 8000
 ```
+
+## License
+
+MIT, see [LICENSE](LICENSE). The font files in `fonts/` are under the SIL Open Font License (Literata, IBM Plex).
