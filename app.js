@@ -59,7 +59,7 @@ function render(){
   $("undo").disabled=!history.length;$("undo").hidden=!S;$("import").disabled=!!S;
   const card=$("card");card.classList.toggle("top",!S); // start screen is top-aligned so changing options never shifts the controls
   if(!S){ // start panel
-    $("actions").hidden=true;$("end").hidden=true;
+    $("actions").classList.add("off");$("end").hidden=true;
     const now=Date.now(),today=SRS.day(now),p=pool(),kn=p.filter(it=>known(it.key)).length;
     const due=p.filter(it=>stats[it.key]&&stats[it.key].due<=today).length,tomorrow=p.filter(it=>stats[it.key]&&stats[it.key].due===today+1).length;
     const nw=Math.min(p.filter(it=>!stats[it.key]).length,Math.max(0,SRS.NEW_PER_DAY-newToday(now))),extra=!due&&!nw;
@@ -83,14 +83,14 @@ function render(){
   $("end").hidden=false;
   $("count").textContent=`${S.done} / ${S.total}`;$("fill").style.width=(S.total?S.done/S.total*100:0)+"%";
   if(!S.queue.length){ // round finished
-    $("actions").hidden=true;$("end").hidden=true;
+    $("actions").classList.add("off");$("end").hidden=true;
     const first=S.total-S.missed.length;
     card.innerHTML=`<div class="panel"><b>Hotovo!</b><span class="note">${first} of ${S.total} right on the first try.</span>
       ${S.missed.length?`<ul class="missed">${S.missed.map(k=>`<li>${esc(BY[k].card.cz)} <span>– ${esc(BY[k].card.en)}</span></li>`).join("")}</ul>`:""}
       <button class="restart" id="go" type="button">Další kolo</button><button class="link" id="home" type="button">Change decks or size</button></div>`;
     $("go").onclick=e=>{e.stopPropagation();newRound()};$("home").onclick=e=>{e.stopPropagation();endRound()};return;
   }
-  $("actions").hidden=!flipped;
+  $("actions").classList.toggle("off",!flipped);
   const it=BY[S.queue[0]],c=it.card,cs=it.dir==="r";
   const front=cs?c.cz:c.en, back=cs?c.en:c.cz;
   card.innerHTML=`<span class="tag">${esc(c.deck.name)} · ${cs?"CZ → EN":"EN → CZ"}${stats[it.key]?"":" · nová"}</span><div class="front" lang="${cs?"cs":"en"}">${esc(front)}</div>`+

@@ -18,7 +18,8 @@ html{-webkit-text-size-adjust:100%;padding-top:env(safe-area-inset-top,0px);padd
 button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px}
-.wrap{max-width:560px;margin:0 auto;padding-inline:16px;padding-block:14px 18px;min-height:100%;box-sizing:border-box;display:flex;flex-direction:column;gap:14px}
+/* The wrap is exactly the screen height and the card takes what is left, so its size never depends on what it shows. */
+.wrap{max-width:560px;margin:0 auto;padding-inline:16px;padding-block:14px 18px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;gap:14px}
 header{display:flex;align-items:center;min-height:2.4rem;justify-content:space-between;gap:12px}
 h1{font-family:var(--display);font-weight:700;font-size:1.35rem;margin:0;text-wrap:balance}
 .dir{cursor:default!important;font:600 .78rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--soft);border:0;border-radius:999px;padding:.45em .9em;cursor:pointer;white-space:nowrap}
@@ -31,9 +32,9 @@ h1{font-family:var(--display);font-weight:700;font-size:1.35rem;margin:0;text-wr
 .progress{display:flex;align-items:center;gap:10px;font:500 .8rem var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
 .bar{flex:1;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
 .bar i{display:block;height:100%;background:var(--good);width:0;transition:width .3s}
-.card{flex:1;min-height:300px;background:var(--card);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:28px 22px;gap:14px;cursor:pointer;position:relative;
+.card{flex:1 1 0;min-height:260px;overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;justify-content:safe center;align-items:center;text-align:center;padding:28px 22px;gap:14px;cursor:pointer;position:relative;
   background-image:linear-gradient(transparent 31px,color-mix(in srgb,var(--line) 55%,transparent) 31px);background-size:100% 32px;background-position:0 18px}
-.card.top{justify-content:flex-start;padding-top:50px}
+.card.top{justify-content:flex-start;padding-top:18px}
 .card:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .card::before{content:"";position:absolute;left:34px;top:0;bottom:0;width:1px;background:color-mix(in srgb,var(--accent) 35%,transparent)}
 .tag{font:500 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -44,6 +45,7 @@ h1{font-family:var(--display);font-weight:700;font-size:1.35rem;margin:0;text-wr
 .hint{color:var(--muted);font-size:.85rem}
 .say{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:.35em .8em;font:500 .8rem var(--body);cursor:pointer}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.actions.off{visibility:hidden} /* keeps its space, so the card doesn't shrink when you flip */
 .actions button{border:0;border-radius:12px;padding:1em;font:600 1rem var(--body);cursor:pointer}
 .again{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
 .know{background:var(--accent);color:var(--accent-ink)}
