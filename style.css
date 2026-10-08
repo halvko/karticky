@@ -51,8 +51,13 @@ h1{font-family:var(--display);font-weight:700;font-size:1.35rem;margin:0;text-wr
 .say{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:.35em .8em;font:500 .8rem var(--body);cursor:pointer}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .actions.off{visibility:hidden} /* keeps its space, so the card doesn't shrink when you flip */
-.actions .go{grid-column:1/-1} /* start / next round sits where Znovu and Umím go, under the thumb */
+/* Off a round, the start button sits centred in the same cell as Znovu + Umím, which stay in the layout
+   (invisible) so the row keeps its height and nothing above or below it moves. */
+.actions>*{grid-row:1}
+.actions .again{grid-column:1}.actions .know{grid-column:2}
+.actions .go{grid-column:1/-1;justify-self:center;align-self:center;padding:.8em 1.4em}
 .actions .go:disabled{opacity:.4;cursor:default}
+.actions.start>:not(.go){visibility:hidden}
 .actions button{border:0;border-radius:12px;padding:1em;font:600 1rem var(--body);cursor:pointer}
 .again{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
 .know{background:var(--accent);color:var(--accent-ink)}

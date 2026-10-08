@@ -55,11 +55,8 @@ function renderChips(){
 }
 
 // The answer row holds Znovu + Umím during a round, and the start / next-round button otherwise.
-function actionRow(go){$("again").hidden=$("know").hidden=!!go;$("go").hidden=!go;$("actions").classList.toggle("off",!go&&!flipped);
-  if(go){$("go").disabled=!sel.length;$("go").innerHTML=go}}
-function roundLabel(title){if(!sel.length)return `${title}<span>pick a deck above</span>`;
-  const now=Date.now(),n=SRS.buildRound(pool(),stats,{size,now,newToday:newToday(now)}).queue.length;
-  return `${title}<span>${n} ${n===1?"card":"cards"} · ${MODES[mode]}</span>`}
+function actionRow(go){const a=$("actions");a.classList.toggle("start",!!go);a.classList.toggle("off",!go&&!flipped);$("go").hidden=!go;
+  if(go){$("go").disabled=!sel.length;$("go").textContent=go}}
 function render(){
   renderChips();
   $("undo").disabled=!history.length;$("undo").hidden=!S;$("import").disabled=!!S;
@@ -74,7 +71,7 @@ function render(){
       (mode==="mix"?`EN → CZ is open for ${np} of ${cards.length} cards, once you know the CZ → EN side.`
       :mode==="r"?"Only CZ → EN. Mix also practises saying the words in Czech.":"Only EN → CZ, including cards you haven't learned yet.");
     $("count").textContent=`${kn} / ${p.length} umím`;$("fill").style.width=(p.length?kn/p.length*100:0)+"%";
-    actionRow(roundLabel(extra?"Procvičit navíc":"Začít kolo"));
+    actionRow(extra?"Procvičit navíc":"Začít kolo");
     if(!sel.length){card.innerHTML=`<div class="panel"><b>Vyberte balíček</b><span class="note">Pick one or more decks above to start a round.</span></div>`;return}
     card.innerHTML=`<div class="panel"><div class="stats"><div><strong>${due}</strong>opakovat</div><div><strong>${nw}</strong>nové</div><div><strong>${kn}</strong>umím</div></div>
       <div class="seg" role="group" aria-label="Direction">${Object.entries(MODES).map(([k,v])=>`<button type="button" data-m="${k}" aria-pressed="${k===mode}">${v}</button>`).join("")}</div>
@@ -87,7 +84,7 @@ function render(){
   $("end").hidden=false;
   $("count").textContent=`${S.done} / ${S.total}`;$("fill").style.width=(S.total?S.done/S.total*100:0)+"%";
   if(!S.queue.length){ // round finished
-    $("end").hidden=true;actionRow(roundLabel("Další kolo"));
+    $("end").hidden=true;actionRow("Další kolo");
     const first=S.total-S.missed.length;
     card.innerHTML=`<div class="panel"><b>Hotovo!</b><span class="note">${first} of ${S.total} right on the first try.</span>
       ${S.missed.length?`<ul class="missed">${S.missed.map(k=>`<li>${esc(BY[k].card.cz)} <span>– ${esc(BY[k].card.en)}</span></li>`).join("")}</ul>`:""}
