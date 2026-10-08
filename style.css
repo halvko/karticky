@@ -51,14 +51,14 @@ h1{font-family:var(--display);font-weight:700;font-size:1.35rem;margin:0;text-wr
 .say{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:.35em .8em;font:500 .8rem var(--body);cursor:pointer}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .actions.off{visibility:hidden} /* keeps its space, so the card doesn't shrink when you flip */
+.actions .go{grid-column:1/-1} /* start / next round sits where Znovu and Umím go, under the thumb */
+.actions .go:disabled{opacity:.4;cursor:default}
 .actions button{border:0;border-radius:12px;padding:1em;font:600 1rem var(--body);cursor:pointer}
 .again{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
 .know{background:var(--accent);color:var(--accent-ink)}
 .actions button span{display:block;font-weight:400;font-size:.75rem;opacity:.75}
 .done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
 .done b{font-family:var(--display);font-size:1.5rem}
-.restart:disabled{opacity:.4;cursor:default}
-.restart{border:0;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:.8em 1.4em;font:600 1rem var(--body);cursor:pointer}
 .tools{display:flex;justify-content:space-between;gap:10px;min-height:1.9rem}
 .tools #end{margin-left:auto}
 .link{border:0;background:none;color:var(--muted);font:500 .85rem var(--body);padding:.3em 0;cursor:pointer}

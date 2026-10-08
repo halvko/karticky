@@ -40,7 +40,7 @@ try {
     await page.locator("#go").waitFor();
     await page.locator("#card .stats").waitFor();
     assert.match(await page.locator("#card .stats").innerText(), /1\s*umím/);
-    assert.match(await page.locator("#card .note").innerText(), /unlocked for 1 of/); // level 3 in CZ → EN still unlocks EN → CZ
+    assert.match(await page.locator("#card .note").innerText(), /open for 1 of/); // level 3 in CZ → EN still unlocks EN → CZ
     await page.locator("#go").click(); await page.locator("#end").click(); await page.locator("#end").click(); // play one answer-less round to trigger a save
     const st = await ls("stats");
     assert.ok(st["l2|vlevo#r"].s >= 5 && Number.isFinite(st["l2|vlevo#r"].due));
