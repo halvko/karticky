@@ -45,8 +45,9 @@ function migrateAll(stats,now){const out={};for(const[k,v]of Object.entries(stat
 function shuffle(a,rand){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 
 // Build a round from the eligible card sides ({key, card:{id, group?}, dir}): due sides first (least likely
-// to be remembered first), then new sides up to the daily cap. If there is neither, it is an extra
-// round of the weakest sides. At most one side per card, or per group of related cards, in a round.
+// to be remembered first), then new sides up to the daily cap, then the weakest other sides to fill the round.
+// It is an "extra" round when nothing was due and no new sides were left. At most one side per card, or per
+// group of related cards, in a round.
 function buildRound(items,stats,{size,now,newToday=0,rand=Math.random}){
   const seen=new Set(),out=[];
   const add=it=>{const k=it.card.group||it.card.id;if(out.length>=size||seen.has(k))return false;seen.add(k);out.push(it.key);return true};
@@ -56,9 +57,9 @@ function buildRound(items,stats,{size,now,newToday=0,rand=Math.random}){
   let left=NEW_PER_DAY-newToday;
   const fresh=shuffle(items.filter(it=>!stats[it.key]),rand).sort((a,b)=>(b.dir==="p")-(a.dir==="p")); // unlocked EN → CZ sides first
   for(const it of fresh){if(left<=0)break;if(add(it))left--}
-  if(out.length)return {queue:shuffle(out,rand),extra:false};
+  const extra=!out.length;
   items.filter(it=>stats[it.key]).sort(byR).forEach(add);
-  return {queue:shuffle(out,rand),extra:true}
+  return {queue:shuffle(out,rand),extra}
 }
 
 const SRS={AGAIN,GOOD,KNOWN,NEW_PER_DAY,day,retrievability,interval,review,migrate,migrateAll,buildRound};

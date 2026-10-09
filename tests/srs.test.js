@@ -49,7 +49,7 @@ test("due sides come first, then new ones up to the daily cap",()=>{
   for(let i=0;i<5;i++){items.push(card("due"+i,"r"));stats["due"+i+"#r"]={...SRS.review(null,SRS.GOOD,NOON-10*D),due:SRS.day(NOON)}}
   for(let i=0;i<5;i++){items.push(card("later"+i,"r"));stats["later"+i+"#r"]=SRS.review(null,SRS.GOOD,NOON)}
   for(let i=0;i<40;i++)items.push(card("new"+i,"r"));
-  const r=SRS.buildRound(items,stats,{size:40,now:NOON,newToday:SRS.NEW_PER_DAY-3,rand:seq()});
+  const r=SRS.buildRound(items,stats,{size:8,now:NOON,newToday:SRS.NEW_PER_DAY-3,rand:seq()});
   assert.equal(r.extra,false);
   assert.equal(r.queue.filter(k=>k.startsWith("due")).length,5);
   assert.equal(r.queue.filter(k=>k.startsWith("new")).length,3);
@@ -82,4 +82,16 @@ test("a round takes at most one card from a group of related cards",()=>{
   const r=SRS.buildRound(items,stats,{size:10,now:NOON,rand:seq()});
   assert.equal(r.queue.length,2);
   assert.equal(r.queue.filter(k=>k.startsWith("daleko")).length,1);
+});
+
+test("when due and new sides don't fill a round, the weakest other sides top it up",()=>{
+  const items=[],stats={};
+  items.push(card("due","r"));stats["due#r"]={...SRS.review(null,SRS.GOOD,NOON-10*D),due:SRS.day(NOON)};
+  for(let i=0;i<10;i++){items.push(card("seen"+i,"r"));stats["seen"+i+"#r"]=SRS.review(null,i<3?SRS.AGAIN:SRS.GOOD,NOON-6e4)}
+  for(let i=0;i<10;i++)items.push(card("new"+i,"r"));
+  const r=SRS.buildRound(items,stats,{size:6,now:NOON,newToday:SRS.NEW_PER_DAY-2,rand:seq()});
+  assert.equal(r.extra,false);assert.equal(r.queue.length,6);
+  assert.ok(r.queue.includes("due#r"));
+  assert.equal(r.queue.filter(k=>k.startsWith("new")).length,2);
+  assert.deepEqual(r.queue.filter(k=>k.startsWith("seen")).sort(),["seen0#r","seen1#r","seen2#r"]); // the three misses are weakest
 });
