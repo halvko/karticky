@@ -55,12 +55,10 @@ function renderChips(){
   $("dir").hidden=!S;if(S)$("dir").textContent=MODES[S.mode||mode];
 }
 
-// The answer row holds Znovu + Umím during a round, and the start / next-round button otherwise.
-function actionRow(go){const a=$("actions");a.classList.toggle("start",!!go);a.classList.toggle("off",!go&&!flipped);$("go").hidden=!go;
-  if(go){$("go").disabled=!sel.length;$("go").textContent=go}}
 function render(){
   renderChips();
   $("undo").disabled=!history.length;$("undo").hidden=!S;$("import").disabled=!!S;
+  $("wrap").classList.toggle("idle",!S||!S.queue.length);
   const card=$("card");card.classList.toggle("top",!S); // start screen is top-aligned so changing options never shifts the controls
   if(!S){ // start panel
     $("end").hidden=true;
@@ -72,27 +70,28 @@ function render(){
       (mode==="mix"?`EN → CZ is open for ${np} of ${cards.length} cards, once you know the CZ → EN side.`
       :mode==="r"?"Only CZ → EN. Mix also practises saying the words in Czech.":"Only EN → CZ, including cards you haven't learned yet.");
     $("count").textContent=`${kn} / ${p.length} umím`;$("fill").style.width=(p.length?kn/p.length*100:0)+"%";
-    actionRow(extra?"Procvičit navíc":"Začít kolo");
     if(!sel.length){card.innerHTML=`<div class="panel"><b>Vyberte balíček</b><span class="note">Pick one or more decks above to start a round.</span></div>`;return}
-    card.innerHTML=`<div class="panel"><div class="stats"><div><strong>${due}</strong>opakovat</div><div><strong>${nw}</strong>nové</div><div><strong>${kn}</strong>umím</div></div>
+    card.innerHTML=`<div class="panel"><span class="tag">${esc(sel.map(id=>DECKS.find(d=>d.id===id).name).join(" + "))}</span>
+      <div class="stats"><div><strong>${due}</strong>opakovat</div><div><strong>${nw}</strong>nové</div><div><strong>${kn}</strong>umím</div></div>
       <div class="seg" role="group" aria-label="Direction">${Object.entries(MODES).map(([k,v])=>`<button type="button" data-m="${k}" aria-pressed="${k===mode}">${v}</button>`).join("")}</div>
       <div class="seg" role="group" aria-label="Cards per round">${SIZES.map(n=>`<button type="button" data-n="${n}" class="n" aria-pressed="${n===size}">${n}</button>`).join("")}</div>
+      <button class="restart" id="go" type="button">${extra?"Procvičit navíc":"Začít kolo"}</button>
       <span class="note">${why}</span></div>`;
     card.querySelectorAll(".seg button.n").forEach(b=>b.onclick=e=>{e.stopPropagation();size=+b.dataset.n;store.set("size",size);render()});
     card.querySelectorAll(".seg button[data-m]").forEach(b=>b.onclick=e=>{e.stopPropagation();mode=b.dataset.m;store.set("mode",mode);render()});
-    return;
+    $("go").onclick=e=>{e.stopPropagation();newRound()};return;
   }
   $("end").hidden=false;
   $("count").textContent=`${S.done} / ${S.total}`;$("fill").style.width=(S.total?S.done/S.total*100:0)+"%";
   if(!S.queue.length){ // round finished
-    $("end").hidden=true;actionRow("Další kolo");
+    $("end").hidden=true;
     const first=S.total-S.missed.length;
     card.innerHTML=`<div class="panel"><b>Hotovo!</b><span class="note">${first} of ${S.total} right on the first try.</span>
       ${S.missed.length?`<ul class="missed">${S.missed.map(k=>`<li>${esc(BY[k].card.cz)} <span>– ${esc(BY[k].card.en)}</span></li>`).join("")}</ul>`:""}
-      <button class="link" id="home" type="button">Change decks or size</button></div>`;
-    $("home").onclick=e=>{e.stopPropagation();endRound()};return;
+      <button class="restart" id="go" type="button">Další kolo</button><button class="link" id="home" type="button">Change decks or size</button></div>`;
+    $("go").onclick=e=>{e.stopPropagation();newRound()};$("home").onclick=e=>{e.stopPropagation();endRound()};return;
   }
-  actionRow(null);
+  $("actions").classList.toggle("off",!flipped);
   const it=BY[S.queue[0]],c=it.card,cs=it.dir==="r";
   const front=cs?c.cz:c.en, back=cs?c.en:c.cz;
   card.innerHTML=`<span class="tag">${esc(c.deck.name)} · ${cs?"CZ → EN":"EN → CZ"}${stats[it.key]?"":" · nová"}</span><div class="front" lang="${cs?"cs":"en"}">${esc(front)}</div>`+
@@ -126,7 +125,6 @@ $("card").onclick=flip;
 $("card").onkeydown=e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flip()}};
 $("export").onclick=exportProgress;$("import").onclick=()=>$("file").click();
 $("file").onchange=e=>{const f=e.target.files[0];e.target.value="";if(f)f.text().then(importProgress)};
-$("go").onclick=newRound;
 $("again").onclick=()=>answer(false);$("know").onclick=()=>answer(true);$("undo").onclick=undo;
 $("end").onclick=()=>{if(endArmed){endRound();return}const b=$("end");b.textContent="Tap again to end round";b.classList.add("warn");endArmed=setTimeout(disarmEnd,3000)};
 document.addEventListener("keydown",e=>{if(e.target.tagName==="BUTTON")return;if(e.key==="1")answer(false);if(e.key==="2")answer(true)});

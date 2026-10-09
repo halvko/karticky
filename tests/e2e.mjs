@@ -47,15 +47,15 @@ try {
     assert.equal(st["l2|vlevo#r"].b, undefined);
   });
 
-  await check("a round plays through to Hotovo, with a miss repeated in the round, and the card and footer never move", async () => {
+  await check("a round plays through to Hotovo, with a miss repeated in the round, the card never changes size in a round, and the footer never moves", async () => {
     await page.locator("[data-n='10']").click();
     const box = async () => { const c = await page.locator("#card").boundingBox(), f = await page.locator("footer").boundingBox(); return `card ${c.y}+${c.height}, footer ${f.y}`; };
-    const startHeight = await box();
     await page.locator("#go").click();
     assert.equal(await page.locator("#undo").isVisible(), true);
     assert.equal(await page.locator(".chip").first().isDisabled(), true); // decks are locked during a round
     let answers = 0, missed = false;
-    const heights = new Set([startHeight]);
+    const heights = new Set(); // the card is taller off a round (start / Hotovo), but fixed during one
+    const footer = async () => (await page.locator("footer").boundingBox()).y, footerY = await footer();
     while (await page.locator("#card .front").count()) {
       heights.add(await box());
       await page.locator("#card").click();
@@ -64,7 +64,7 @@ try {
       if (++answers > 30) throw new Error("round never ended");
     }
     assert.equal(await page.locator("#card b").innerText(), "Hotovo!");
-    heights.add(await box());
+    assert.equal(await footer(), footerY, "footer moved between the start screen and Hotovo");
     assert.equal(heights.size, 1, `layout moved with the card's content: ${[...heights].join(" | ")}`);
     assert.equal(await page.locator(".missed li").count(), 1);
     assert.equal(await page.locator("#undo").isVisible(), true); // undo stays on the Hotovo screen
