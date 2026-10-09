@@ -69,7 +69,7 @@ function render(){
     const nw=Math.min(p.filter(it=>!stats[it.key]).length,Math.max(0,SRS.NEW_PER_DAY-newToday(now))),extra=!due&&!nw;
     const cards=ALL.filter(c=>sel.includes(c.deck.id)),np=cards.filter(unlocked).length;
     const why=(extra?`Nothing due${tomorrow?` (${tomorrow} tomorrow)`:""}, so this is an extra round of your weakest cards. `:"")+
-      (mode==="mix"?`EN → CZ is open for ${np} of ${cards.length} cards, once you know the CZ → EN side.`
+      (mode==="mix"?`EN → CZ unlocks card by card, once you know the CZ → EN side. ${np} of ${cards.length} unlocked.`
       :mode==="r"?"Only CZ → EN. Mix also practises saying the words in Czech.":"Only EN → CZ, including cards you haven't learned yet.");
     $("count").textContent=`${kn} / ${p.length} umím`;$("fill").style.width=(p.length?kn/p.length*100:0)+"%";
     if(!sel.length){card.innerHTML=`<div class="panel"><b>Vyberte balíček</b><span class="note">Pick one or more decks above to start a round.</span></div>`;return}
