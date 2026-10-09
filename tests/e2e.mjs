@@ -9,12 +9,15 @@ import assert from "node:assert/strict";
 
 const DIST = path.join(path.dirname(new URL(import.meta.url).pathname), "..", "dist");
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".webmanifest": "application/manifest+json", ".png": "image/png", ".woff2": "font/woff2", ".svg": "image/svg+xml" };
+const overrides = {}; // path -> content, to simulate a new deploy
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(new URL(req.url, "http://x").pathname);
   if (p.endsWith("/")) p += "index.html";
+  const headers = { "content-type": TYPES[path.extname(p)] || "application/octet-stream", "cache-control": "max-age=600" }; // as GitHub Pages
+  if (overrides[p]) { res.writeHead(200, headers).end(overrides[p]); return; }
   const f = path.join(DIST, p);
   if (!f.startsWith(DIST) || !fs.existsSync(f)) { res.writeHead(404).end(); return; }
-  res.writeHead(200, { "content-type": TYPES[path.extname(f)] || "application/octet-stream" }).end(fs.readFileSync(f));
+  res.writeHead(200, headers).end(fs.readFileSync(f));
 }).listen(0);
 const url = `http://localhost:${server.address().port}/`;
 
@@ -117,6 +120,17 @@ try {
     await page.locator("#card").click();
     assert.ok(await page.locator("#card .answer").isVisible());
     await context.setOffline(false);
+  });
+
+  await check("a new deploy shows up without relaunching, despite the HTTP cache", async () => {
+    await page.locator("#end").click(); await page.locator("#end").click(); // back to the start screen
+    const ver = await page.locator("footer .ver").innerText();
+    overrides["/index.html"] = fs.readFileSync(path.join(DIST, "index.html"), "utf8").replace(`class="ver">${ver}<`, `class="ver">NEWVER<`);
+    overrides["/sw.js"] = fs.readFileSync(path.join(DIST, "sw.js"), "utf8").replace(/const VERSION = "[^"]*"/, 'const VERSION = "test-update"');
+    const reloaded = page.waitForEvent("load");
+    await page.evaluate(() => navigator.serviceWorker.getRegistration().then(r => r.update()));
+    await reloaded;
+    assert.equal(await page.locator("footer .ver").innerText(), "NEWVER");
   });
 
   assert.deepEqual(errors, [], "no console errors");

@@ -17,7 +17,7 @@ let size=SIZES.includes(store.get("size",20))?store.get("size",20):20;
 let mode=MODES[store.get("mode","mix")]?store.get("mode","mix"):"mix";
 let S=store.get("session",null);
 if(S&&!(Array.isArray(S.queue)&&S.queue.every(id=>BY[id])&&Array.isArray(S.missed)))S=null;
-let flipped=false, history=[], endArmed=null;
+let flipped=false, history=[], endArmed=null, reloadPending=false;
 
 function save(){store.set("stats",stats);store.set("log",log);store.set("session",S)}
 function known(key){return !!stats[key]&&stats[key].s>=SRS.KNOWN}
@@ -58,7 +58,9 @@ function renderChips(){
 function render(){
   renderChips();
   $("undo").disabled=!history.length;$("undo").hidden=!S;$("import").disabled=!!S;
-  $("wrap").classList.toggle("idle",!S||!S.queue.length);
+  const idle=!S||!S.queue.length;
+  if(idle&&reloadPending){location.reload();return} // a new version arrived during the round
+  $("wrap").classList.toggle("idle",idle);
   const card=$("card");card.classList.toggle("top",!S); // start screen is top-aligned so changing options never shifts the controls
   if(!S){ // start panel
     $("end").hidden=true;
@@ -129,7 +131,14 @@ $("again").onclick=()=>answer(false);$("know").onclick=()=>answer(true);$("undo"
 $("end").onclick=()=>{if(endArmed){endRound();return}const b=$("end");b.textContent="Tap again to end round";b.classList.add("warn");endArmed=setTimeout(disarmEnd,3000)};
 document.addEventListener("keydown",e=>{if(e.target.tagName==="BUTTON")return;if(e.key==="1")answer(false);if(e.key==="2")answer(true)});
 render();
-// Offline + instant launch
-if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+// Offline + instant launch. An installed app often resumes rather than relaunching, so also look for a new
+// version whenever it comes back to the foreground. When one takes over, reload to show it, but only off a
+// round (start or Hotovo screen) so a round in progress isn't interrupted.
+if("serviceWorker" in navigator){
+  const hadController=!!navigator.serviceWorker.controller; // the first install also takes control; nothing to reload then
+  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"}).then(reg=>{
+    document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")reg.update().catch(()=>{})})}).catch(()=>{}));
+  navigator.serviceWorker.addEventListener("controllerchange",()=>{if(!hadController)return;if(!S||!S.queue.length)location.reload();else reloadPending=true});
+}
 // Ask the browser not to evict saved progress
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
