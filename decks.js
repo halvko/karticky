@@ -1,6 +1,14 @@
 // Cards: [Czech, English, optional note]. Cards are tracked by deck id + Czech text,
 // so renaming the Czech side of a card resets its progress; adding or reordering cards is safe.
 const DECKS = [
+ {id:"slov1", name:"Slovíčka", sub:"30. září – 14. října · opakování", cards:[
+  ["hodně práce","a lot of work","Mám hodně práce."],["ta učebnice","textbook","ten pracovní sešit = workbook"],
+  ["to Řecko","Greece","v Řecku = in Greece · z Řecka = from Greece"],["ta spolužačka","classmate (woman)","ten spolužák = classmate (man)"],
+  ["ti sourozenci","siblings","Máte sourozence? – bratra nebo sestru"],["ti kamarádi","friends","ten kamarád / ta kamarádka = a friend (m / f)"],
+  ["jet na kole","to ride a bike","to kolo = bike"],["Prší.","It's raining."],
+  ["to oblíbené jídlo","favourite food","Moje oblíbené jídlo je…"],["ta skvělá dovolená","a great holiday","Mám dovolenou. = I'm on holiday."],
+  ["bezpečný / nebezpečný","safe / dangerous"]
+ ]},
  {id:"l2", name:"Lekce 2", sub:"30. září · kde je…?", cards:[
   ["vlevo","on the left (kde?)","kde? = where · kam? = where to: doleva"],["vpravo","on the right (kde?)","kam? → doprava"],
   ["nahoře","at the top, up there (kde?)","kam? → nahoru"],["dole","at the bottom, down there (kde?)","kam? → dolů"],
