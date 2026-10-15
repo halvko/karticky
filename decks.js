@@ -77,7 +77,9 @@ const DECKS = [
   ["Jablko je vedle knihy.","The apple is next to the book."]
  ]},
  {id:"telo", name:"Tělo", sub:"24.–29. září · body & yoga", cards:[
-  ["ta ústa, ta pusa","mouth","ústa is plural, so it takes ta"],["ten krk","neck"],["to rameno","shoulder"],["ta ruka, ruce","arm/hand, arms/hands"],["levá / pravá","left / right"],
+  ["ta ústa, ta pusa","mouth","ústa is plural, so it takes ta"],
+  ["ta hlava","head","Bolí mě hlava. = I have a headache."],["to oko, oči","eye, eyes","dvě oči · To jsou oči."],["to ucho, uši","ear, ears","dvě uši"],
+  ["ten nos","nose"],["ty vlasy","hair","always plural, so it takes ty"],["Bolí mě záda.","My back hurts.","záda is plural, but it's still bolí"],["ten krk","neck"],["to rameno","shoulder"],["ta ruka, ruce","arm/hand, arms/hands"],["levá / pravá","left / right"],
   ["ta noha","leg (foot)"],["to koleno","knee"],["to břicho","belly"],["ta záda","back","always plural, so it takes ta"],["to chodidlo","sole of the foot","from chodit = to walk"],
   ["ta dlaň","palm"],["ten prst, prsty","finger, fingers"],["ten palec","thumb"],["Držím palce!","Fingers crossed!","lit. “I'm holding thumbs”"],
   ["protáhnout se","to stretch"],["Tlačte ramena dolů.","Push your shoulders down."],["nahoru","up, upwards (kam?)","kde? → nahoře"],["dolů","down, downwards (kam?)","kde? → dole"],
@@ -89,6 +91,8 @@ const DECKS = [
  {id:"l1", name:"Lekce 1", sub:"3.–21. září · fráze", cards:[
   ["Jak se řekne ‘apple’?","How do you say ‘apple’?","jablko"],["Co to znamená?","What does it mean?"],["Jak se to píše?","How is it spelled?"],
   ["Ještě jednou, prosím.","Once more, please."],["Mám otázku.","I have a question."],["Promiňte, nerozumím.","Sorry, I don't understand."],
+  ["Rozumíte? – Rozumím.","Do you understand? – I understand."],["Ano. / Jo. / Ne.","Yes. / Yeah. / No.","jo = informal ano"],
+  ["Děkuju. – Prosím.","Thank you. – You're welcome.","děkuji = a bit more formal"],
   ["Mluvím trochu česky.","I speak a little Czech."],["Mluvím plynule anglicky.","I speak English fluently."],["Mluvíte anglicky?","Do you speak English?"],
   ["Těší mě.","Nice to meet you."],["Jsem z Dánska.","I'm from Denmark."],["Bydlím v Praze.","I live in Prague."],
   ["Pracuju jako programátor.","I work as a programmer."],["Jste ženatý?","Are you married? (asking a man)","vdaná = married, for a woman"],["Má mladšího bratra.","He/she has a younger brother.","mladší = younger, starší = older"],
