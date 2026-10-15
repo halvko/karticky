@@ -9,6 +9,12 @@ const DECKS = [
   ["to oblíbené jídlo","favourite food","Moje oblíbené jídlo je…"],["ta skvělá dovolená","a great holiday","Mám dovolenou. = I'm on holiday."],
   ["bezpečný / nebezpečný","safe / dangerous"]
  ]},
+ {id:"cisla", name:"Čísla", sub:"0–19 · numbers", cards:[
+  ["nula","0"],["jedna","1","jeden (ten) · jedna (ta) · jedno (to)"],["dva","2","dva (ten) · dvě (ta, to)"],["tři","3"],["čtyři","4"],
+  ["pět","5"],["šest","6"],["sedm","7","spoken /sedum/"],["osm","8","spoken /osum/"],["devět","9"],["deset","10"],
+  ["jedenáct","11"],["dvanáct","12"],["třináct","13"],["čtrnáct","14","not čtyřnáct"],["patnáct","15","not pětnáct"],
+  ["šestnáct","16"],["sedmnáct","17"],["osmnáct","18","spoken /osumnáct/"],["devatenáct","19","not devětnáct"]
+ ]},
  {id:"l2", name:"Lekce 2", sub:"30. září · kde je…?", cards:[
   ["vlevo","on the left (kde?)","kde? = where · kam? = where to: doleva"],["vpravo","on the right (kde?)","kam? → doprava"],
   ["nahoře","at the top, up there (kde?)","kam? → nahoru"],["dole","at the bottom, down there (kde?)","kam? → dolů"],
