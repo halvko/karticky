@@ -1,13 +1,18 @@
 // Cards: [Czech, English, optional note]. Cards are tracked by deck id + Czech text,
 // so renaming the Czech side of a card resets its progress; adding or reordering cards is safe.
 const DECKS = [
- {id:"slov1", name:"Slovíčka", sub:"30. září – 14. října · opakování", cards:[
+ {id:"slov1", name:"Slovíčka", sub:"30. září – 15. října · opakování", cards:[
   ["hodně práce","a lot of work","Mám hodně práce."],["ta učebnice","textbook","ten pracovní sešit = workbook"],
   ["to Řecko","Greece","v Řecku = in Greece · z Řecka = from Greece"],["ta spolužačka","classmate (woman)","ten spolužák = classmate (man)"],
   ["ti sourozenci","siblings","Máte sourozence? – bratra nebo sestru"],["ti kamarádi","friends","ten kamarád / ta kamarádka = a friend (m / f)"],
   ["jet na kole","to ride a bike","to kolo = bike"],["Prší.","It's raining."],
   ["to oblíbené jídlo","favourite food","Moje oblíbené jídlo je…"],["ta skvělá dovolená","a great holiday","Mám dovolenou. = I'm on holiday."],
-  ["bezpečný / nebezpečný","safe / dangerous"]
+  ["bezpečný / nebezpečný","safe / dangerous","Jet na kole v Dánsku je bezpečné, ale v Praze je to nebezpečné."],
+  ["ty peníze","money","always plural, so it takes ty"],["to parkoviště","car park"],["to letiště","airport"],
+  ["ta jízdenka","ticket","= ten lístek"],["skoro včas","almost on time"],["někdy","sometimes"],
+  ["venku / doma","outside / at home"],["oni / ony","they (men or mixed) / they (women)","oni jsou · ony jsou"],
+  ["asi","about, roughly; probably","asi pět minut pěšky"],["na ulici","in the street"],
+  ["opravit","to correct, to fix","Opravte odpovědi. = Correct the answers."],["ptát se","to ask","Ptá se, kde co je."]
  ]},
  {id:"cisla", name:"Čísla", sub:"0–19 · numbers", cards:[
   ["nula","0"],["jedna","1","jeden (ten) · jedna (ta) · jedno (to)"],["dva","2","dva (ten) · dvě (ta, to)"],["tři","3"],["čtyři","4"],
@@ -24,6 +29,11 @@ const DECKS = [
   ["Nevíte, kde je metro?","Do you know where the metro is?","lit. “you don't know…” – the polite way to ask"],
   ["Musíte jet tři stanice metrem.","You have to go three stops by metro."],
   ["Musíte jít rovně a pak doprava.","You have to go straight and then right."],
+  ["Tady doprava a pak rovně.","Here to the right and then straight on."],["Je to asi deset minut pěšky.","It's about ten minutes on foot."],
+  ["Musíte jet tři stanice tramvají číslo šest.","You have to go three stops on tram number six.","ta tramvaj · tramvají = by tram"],
+  ["Musíte jet metrem áčkem.","You have to take metro line A.","áčko, béčko, céčko = lines A, B, C"],
+  ["Škola je tam vlevo nahoře.","The school is up there on the left."],["Banka je vlevo dole.","The bank is down on the left."],
+  ["ta tramvaj","tram"],
   ["Stanice je tam vpravo dole.","The station is down there on the right.","where it is (kde?): vpravo, dole · where you go (kam?): doprava, dolů"],
   ["kde? / kam?","where? / where to?","Kde je banka? – Vlevo. · Kam jdete? – Doleva."],
   ["Vidíte ten bílý dům?","Do you see that white house?"],["Kolik stojí lístek?","How much is a ticket?"],
