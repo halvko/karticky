@@ -14,6 +14,22 @@ const DECKS = [
   ["asi","about, roughly; probably","asi pět minut pěšky"],["na ulici","in the street"],
   ["opravit","to correct, to fix","Opravte odpovědi. = Correct the answers."],["ptát se","to ask","Ptá se, kde co je."]
  ]},
+ {id:"ukol1", name:"Domácí úkol", sub:"15. října · pozdravy, jídlo, lidé", cards:[
+  ["Dobré ráno!","Good morning!"],["Dobrý večer!","Good evening!"],["Dobrou noc!","Good night!"],
+  ["Čau, jak to jde?","Hi, how's it going?","čau = ahoj"],["Tak hezký den!","Have a nice day, then!"],["Tak jo!","OK then! Alright!"],["To jo.","Yeah, true."],
+  ["Tak co, už umíš česky?","So, can you speak Czech yet?"],["Už trochu rozumím.","I already understand a little."],
+  ["Ale já ještě neumím moc dobře česky.","But I can't speak Czech very well yet.","už = already · ještě ne = not yet"],
+  ["Tady mluvíme jen česky!","We only speak Czech here!"],["Tak to je problém.","Well, that's a problem."],
+  ["Tak to se máš fajn.","Well, lucky you. (lit. so you're doing fine)"],["Co ještě umíte?","What else can you do?","A co neumíte? = And what can't you do?"],
+  ["Jak mluvíte?","What languages do you speak?","lit. “how do you speak?” · Mluvím dánsky a anglicky."],
+  ["To je… / To jsou…","It's… / They're…","To je čaj. · To jsou banány."],["Co je tohle? / Kdo je tohle?","What's this? / Who's this?","Tohle je… · Tohle jsou…"],
+  ["ten banán","banana"],["to pivo","beer"],["ta čokoláda","chocolate"],["ten čaj","tea"],["ta rýže","rice","Kde je rýže? – Rýže je vlevo nahoře."],
+  ["to kuře","chicken"],["to zelí","cabbage"],["ta broskev","peach"],
+  ["ten mobil","mobile phone"],["ten počítač","computer"],["ta kočka","cat","ty kočky = cats"],["ten papír","(sheet of) paper","ty papíry = papers"],
+  ["to jméno","(first) name"],["to příjmení","surname"],["ta adresa","address"],["ten telefon","phone"],["ten muž / ta žena","man / woman"],
+  ["ten učitel / ta učitelka","teacher (m / f)"],["ta kamarádka","friend (woman)","ten kamarád = friend (man)"],["ten Čech / ta Češka","Czech man / Czech woman","ti Češi = Czechs"],
+  ["fotit","to take photos"],["spolu","together","Vaří spolu."],["ještě","still, yet; else","Ještě jednou, prosím."]
+ ]},
  {id:"cisla", name:"Čísla", sub:"0–19 · numbers", cards:[
   ["nula","0"],["jedna","1","jeden (ten) · jedna (ta) · jedno (to)"],["dva","2","dva (ten) · dvě (ta, to)"],["tři","3"],["čtyři","4"],
   ["pět","5"],["šest","6"],["sedm","7","spoken /sedum/"],["osm","8","spoken /osum/"],["devět","9"],["deset","10"],
