@@ -28,7 +28,7 @@ const DECKS = [
   ["ten mobil","mobile phone"],["ten počítač","computer"],["ta kočka","cat","ty kočky = cats"],["ten papír","(sheet of) paper","ty papíry = papers"],
   ["to jméno","(first) name"],["to příjmení","surname"],["ta adresa","address"],["ten telefon","phone"],["ten muž / ta žena","man / woman"],
   ["ten učitel / ta učitelka","teacher (m / f)"],["ta kamarádka","friend (woman)","ten kamarád = friend (man)"],["ten Čech / ta Češka","Czech man / Czech woman","ti Češi = Czechs"],
-  ["fotit","to take photos"],["spolu","together","Vaří spolu."],["ještě","still, yet; more, else","Ještě jednou, prosím. = One more time, please. · Co ještě umíte? = What else can you do?"]
+  ["fotit","to take photos"],["spolu","together","Vaří spolu."],["ještě","still, yet; more","Ještě jednou, prosím. = One more time, please. · Ještě neumím česky. = I can't speak Czech yet. · Co ještě umíte? = What more can you do?"]
  ]},
  {id:"cisla", name:"Čísla", sub:"0–19 · numbers", cards:[
   ["nula","0"],["jedna","1","jeden (ten) · jedna (ta) · jedno (to)"],["dva","2","dva (ten) · dvě (ta, to)"],["tři","3"],["čtyři","4"],
