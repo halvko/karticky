@@ -10,7 +10,7 @@ const DECKS = [
   ["bezpečný / nebezpečný","safe / dangerous","Jet na kole v Dánsku je bezpečné, ale v Praze je to nebezpečné."],
   ["ty peníze","money","always plural, so it takes ty"],["to parkoviště","car park"],["to letiště","airport"],
   ["ta jízdenka","ticket","= ten lístek"],["skoro včas","almost on time"],["někdy","sometimes"],
-  ["venku / doma","outside / at home"],["oni / ony","they (men or mixed) / they (women)","oni jsou · ony jsou"],
+  ["venku","outside, outdoors","x doma = at home"],["doma","at home","x venku = outside · Dnes jsem doma."],["oni / ony","they (men or mixed) / they (women)","oni jsou · ony jsou"],
   ["asi","about, roughly; probably","asi pět minut pěšky"],["na ulici","in the street"],
   ["opravit","to correct, to fix","Opravte odpovědi. = Correct the answers."],["ptát se","to ask","Ptá se, kde co je."]
  ]},
@@ -130,4 +130,5 @@ const RELATED = [
  ["vlevo","vpravo","doleva","doprava","levá / pravá","kde? / kam?","Stanice je tam vpravo dole."],
  ["nahoře","dole","nahoru","dolů","Tlačte ramena dolů."],
  ["dopředu","dozadu","zpátky"],
+ ["venku","doma"],
 ];
