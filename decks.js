@@ -80,7 +80,7 @@ const DECKS = [
   ["ta ústa","mouth","plural, so it takes ta · ta pusa = mouth (informal)"],["ta pusa","mouth (informal)","ta ústa = mouth"],
   ["ta hlava","head","Bolí mě hlava. = I have a headache."],["to oko, oči","eye, eyes","dvě oči · To jsou oči."],["to ucho, uši","ear, ears","dvě uši"],
   ["ten nos","nose"],["ty vlasy","hair","always plural, so it takes ty"],["Bolí mě záda.","My back hurts.","záda is plural, but it's still bolí"],["ten krk","neck"],["to rameno","shoulder"],["ta ruka, ruce","arm/hand, arms/hands"],["levá","left (levá ruka = left hand)","x pravá = right"],["pravá","right (pravá ruka = right hand)","x levá = left"],
-  ["ta noha","leg (foot)"],["to koleno","knee"],["to břicho","belly"],["ta záda","back","always plural, so it takes ta"],["to chodidlo","sole of the foot","from chodit = to walk"],
+  ["ta noha","leg (foot)"],["to koleno","knee"],["to břicho","belly"],["ta záda","back (body part)","always plural, so it takes ta · Bolí mě záda."],["to chodidlo","sole of the foot","from chodit = to walk"],
   ["ta dlaň","palm"],["ten prst, prsty","finger, fingers"],["ten palec","thumb"],["Držím palce!","Fingers crossed!","lit. “I'm holding thumbs”"],
   ["protáhnout se","to stretch"],["Tlačte ramena dolů.","Push your shoulders down."],["nahoru","up, upwards (kam?)","kde? → nahoře"],["dolů","down, downwards (kam?)","kde? → dole"],
   ["dopředu","forward (kam?)"],["dozadu","backwards (kam?)"],["zpátky","back (return)"],["ten nádech","inhale, in-breath"],["ten výdech","exhale, out-breath"],
