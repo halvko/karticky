@@ -14,6 +14,9 @@ const DECKS = [
   ["asi","about, roughly; probably","asi pět minut pěšky"],["na ulici","in the street"],
   ["opravit","to correct, to fix","Opravte odpovědi. = Correct the answers."],["ptát se","to ask","Ptá se, kde co je."]
  ]},
+ {id:"slov2", name:"Slovíčka II", sub:"21. října – 5. listopadu", cards:[
+  ["odtud","from here","Hotel je pět minut odtud."],["nějaký","some, any (a … )","nějaký hotel · nějaká restaurace · nějaké kino"],["Je tady nějaký hotel?","Is there a hotel here?"],["někde","somewhere","Je tady někde blízko nádraží?"],["bohužel","unfortunately","Ne, bohužel nevím."],["ten vchod","entrance","Tam je vchod."],["Hledám…","I'm looking for…","hledat + 4th case: obchod, školu, restauraci"],["Musíte jet jedničkou.","You have to take the number one (bus/tram).","jednička = number one"],["tohle","this (one)","tenhle čaj · tahle kočka · tohle jméno · tyhle papíry"],["ta krabice","box","Krabice je vedle králíka."],["ten králík","rabbit"],["ta pravda","truth","To je pravda. = That's true."],["ti lidé","people","spoken: lidi"],["jen","only","= jenom · Tak už jen česky."],["nad","above","Háček je nad c."],["ten háček","háček (ˇ)","č, š, ž, ř… · ta čárka = the accent ´"],["ta čárka","čárka (´), comma","á, é, í… · ten háček = ˇ"],["lomeno","slash (in addresses)","Slezská 126/6 = sto dvacet šest lomeno šest"],["programovat","to program","Umím programovat."],["blízko mě","near me"],["spát","to sleep","O víkendu jsem spal hodně."],["ta obec","municipality, village or town"],["ta země","country","Česká republika"],["mnoho","a lot, many","= hodně"],["Mám hotovo.","I'm done."],["Je mi čtyřicet.","I'm forty (years old).","Je mi… = I am … years old"],["Můj e-mail je…","My email is…"],["poslouchat","to listen","poslouchám · oni poslouchají"],["znamenat","to mean","Co to znamená? · oni znamenají"],["odpovídat","to answer","odpovídám · oni odpovídají"],["říkat","to say","Co říkáte? · oni říkají"],["Ptejte se a odpovídejte.","Ask and answer."],["stejný","same","To je stejné."],["Mimo provoz!","Out of order!","Metro je mimo provoz."],["zrušit","to cancel","Let je zrušen pro špatné počasí. · Musím zrušit lekci."],["potom","then, afterwards","= pak"],["ta kancelář","office","kde? → v kanceláři"],["Fotím špatně.","I'm bad at taking photos."],["ten číšník","waiter"],["to kafe","coffee","= ta káva"],["ta univerzita","university"],["ta lekce","lesson"],["ten den","day","Dobrý den!"],["ten večer","evening","Dobrý večer!"],["ta noc","night","Dobrou noc!"],["to ráno","morning","Dobré ráno!"],["to Česko","Czechia","= Česká republika"],["Líbí se mi tady.","I like it here.","Líbí se mi Praha. · Nelíbí se mi to."],["Chutná mi pivo.","I like the beer (taste).","chutnat = to taste good"],["Nechutnají mi knedlíky.","I don't like dumplings.","plural: chutnají"],["Jsem rád, že jsem tady.","I'm glad to be here.","woman: ráda · plural: rádi"],["ten knedlík","dumpling"],["ten hluk","noise","Je tam hluk."],["Všechno je blízko.","Everything is close."],["docela","quite, fairly","docela dobrá restaurace"],["vzadu","at the back, behind","Vzadu je park."],["ten park","park"],["ta firma","company, firm","kde? → ve firmě"],["sympatický","nice, likeable","Je moc sympatický."],["hezký","nice, pretty","Můj dům je hezký."],["starý","old","x nový = new"],["nový","new","x starý = old"],["moderní","modern","x historický = historic"],["historický","historic","x moderní = modern"]
+ ]},
  {id:"ukol1", name:"Domácí úkol", sub:"15. října · pozdravy, jídlo, lidé", cards:[
   ["Dobré ráno!","Good morning!"],["Dobrý večer!","Good evening!"],["Dobrou noc!","Good night!"],
   ["Čau, jak to jde?","Hi, how's it going?","čau = ahoj"],["Tak hezký den!","Have a nice day, then!"],["Tak jo!","OK then! Alright!"],["To jo.","Yeah, true."],
@@ -30,11 +33,12 @@ const DECKS = [
   ["ten učitel","teacher (man)","ta učitelka = teacher (woman)"],["ta učitelka","teacher (woman)","ten učitel = teacher (man)"],["ta kamarádka","friend (woman)","ten kamarád = friend (man)"],["ten Čech","Czech (man)","ta Češka = Czech woman · ti Češi = Czechs"],["ta Češka","Czech (woman)","ten Čech = Czech man"],
   ["fotit","to take photos"],["spolu","together","Vaří spolu."],["ještě","still, yet; more","Ještě jednou, prosím. = One more time, please. · Ještě neumím česky. = I can't speak Czech yet. · Co ještě umíte? = What more can you do?"]
  ]},
- {id:"cisla", name:"Čísla", sub:"0–19 · numbers", cards:[
+ {id:"cisla", name:"Čísla", sub:"0–100 · numbers", cards:[
   ["nula","0"],["jedna","1","jeden (ten) · jedna (ta) · jedno (to)"],["dva","2","dva (ten) · dvě (ta, to)"],["tři","3"],["čtyři","4"],
   ["pět","5"],["šest","6"],["sedm","7","spoken /sedum/"],["osm","8","spoken /osum/"],["devět","9"],["deset","10"],
   ["jedenáct","11"],["dvanáct","12"],["třináct","13"],["čtrnáct","14","not čtyřnáct"],["patnáct","15","not pětnáct"],
-  ["šestnáct","16"],["sedmnáct","17"],["osmnáct","18","spoken /osumnáct/"],["devatenáct","19","not devětnáct"]
+  ["šestnáct","16"],["sedmnáct","17"],["osmnáct","18","spoken /osumnáct/"],["devatenáct","19","not devětnáct"],
+  ["dvacet","20","dvacet jedna = 21"],["třicet","30"],["čtyřicet","40","x čtrnáct = 14"],["padesát","50"],["šedesát","60"],["sedmdesát","70"],["osmdesát","80"],["devadesát","90","x devatenáct = 19"],["sto","100"],["první","first","první ulicí doleva"],["druhý","second"],["třetí","third"],["čtvrtý","fourth"],["pátý","fifth"],["šestý","sixth"]
  ]},
  {id:"l2", name:"Lekce 2", sub:"30. září · kde je…?", cards:[
   ["vlevo","on the left (kde?)","kde? = where · kam? = where to: doleva"],["vpravo","on the right (kde?)","kam? → doprava"],
@@ -80,7 +84,7 @@ const DECKS = [
   ["ta ústa","mouth","plural, so it takes ta · ta pusa = mouth (informal)"],["ta pusa","mouth (informal)","ta ústa = mouth"],
   ["ta hlava","head","Bolí mě hlava. = I have a headache."],["to oko, oči","eye, eyes","dvě oči · To jsou oči."],["to ucho, uši","ear, ears","dvě uši"],
   ["ten nos","nose"],["ty vlasy","hair","always plural, so it takes ty"],["Bolí mě záda.","My back hurts.","záda is plural, but it's still bolí"],["ten krk","neck"],["to rameno","shoulder"],["ta ruka, ruce","arm/hand, arms/hands"],["levá","left (levá ruka = left hand)","x pravá = right"],["pravá","right (pravá ruka = right hand)","x levá = left"],
-  ["ta noha","leg (foot)"],["to koleno","knee"],["to břicho","belly"],["ta záda","back (body part)","always plural, so it takes ta · Bolí mě záda."],["to chodidlo","sole of the foot","from chodit = to walk"],
+  ["ta noha","leg (foot)"],["to koleno","knee"],["to břicho","belly"],["ta záda","back (body part)","always plural, so it takes ta · Bolí mě záda."],["to chodidlo","sole of the foot","from chodit = to walk"],["to zápěstí","wrist"],
   ["ta dlaň","palm"],["ten prst, prsty","finger, fingers"],["ten palec","thumb"],["Držím palce!","Fingers crossed!","lit. “I'm holding thumbs”"],
   ["protáhnout se","to stretch"],["Tlačte ramena dolů.","Push your shoulders down."],["nahoru","up, upwards (kam?)","kde? → nahoře"],["dolů","down, downwards (kam?)","kde? → dole"],
   ["dopředu","forward (kam?)"],["dozadu","backwards (kam?)"],["zpátky","back (return)"],["ten nádech","inhale, in-breath"],["ten výdech","exhale, out-breath"],
@@ -155,4 +159,7 @@ const RELATED = [
  ["ten student","ta studentka"],
  ["ten ekonom","ta ekonomka"],
  ["zavináč","tečka"],
+ ["ten háček","ta čárka"],
+ ["starý","nový"],
+ ["moderní","historický"],
 ];

@@ -21,7 +21,8 @@ const server = http.createServer((req, res) => {
 }).listen(0);
 const url = `http://localhost:${server.address().port}/`;
 
-const browser = await chromium.launch(process.env.CI ? { channel: "chrome" } : {});
+// CI uses the runner's Chrome; CHROME_PATH points at any other local Chromium (e.g. one newer than playwright-core expects).
+const browser = await chromium.launch(process.env.CI ? { channel: "chrome" } : process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
 const context = await browser.newContext({ acceptDownloads: true });
 const page = await context.newPage();
 const errors = [];

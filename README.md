@@ -55,7 +55,7 @@ python3 build.py && python3 -m http.server -d dist 8000
 npm ci && npm test   # build, unit tests, then the browser test against dist/
 ```
 
-The browser test uses `playwright-core`, which has no bundled browser. Locally it finds a Playwright Chromium; in CI (`CI=true`) it uses the runner's preinstalled Chrome. The deploy workflow runs both before publishing.
+The browser test uses `playwright-core`, which has no bundled browser. Locally it finds a Playwright Chromium; in CI (`CI=true`) it uses the runner's preinstalled Chrome, and `CHROME_PATH=…` points it at any other Chromium. The deploy workflow runs both before publishing.
 
 ## License
 
