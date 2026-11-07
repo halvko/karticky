@@ -12,6 +12,7 @@ Czech flashcards built from my lesson notes. A static, offline-first PWA: no bui
 | `tests/` | `srs.test.js` (Node, no deps) and `e2e.mjs` (headless Chromium against `dist/`). |
 | `style.css`, `index.html` | UI. Fonts are self-hosted in `fonts/`. |
 | `sw.js` | Service worker: precaches everything, serves cache-first. |
+| `CLAUDE.md`, `docs/HANDOVER.md` | Working rules for agents; context, decisions, content sources and roadmap. |
 | `build.py` | Copies the app to `dist/`, stamps the commit hash into the footer and `sw.js` with a content hash and the precache list. |
 
 ## How learning works
